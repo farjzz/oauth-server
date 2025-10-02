@@ -30,3 +30,40 @@ Request authorization for a client.
   "message": "Client and user authorized",
   "code": "random_authorization_code"
 }
+```
+
+### 2. `/token` (POST)
+Exchange an authorization code for an access token.
+
+**Body Parameters**:
+
+- `code` – Authorization code  
+- `client_id` – Client ID  
+- `client_secret` – Client secret  
+- `redirect_uri` – Redirect URI  
+
+**Response**:
+
+```json
+{
+  "access_token": "random_access_token",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+### 3. `/resource` (GET)
+
+Access a protected resource using a Bearer token.
+
+**Headers**:
+Authorization: Bearer <access_token>
+
+**Response**:
+
+```json
+{
+  "message": "username"
+}
+```
+
